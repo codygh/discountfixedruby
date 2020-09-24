@@ -59,5 +59,9 @@ Rails.application.configure do
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+  # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  ENV['SHOPIFY_API_KEY']  = '1b00da9a8259d170a6f14ed2cb35dbaf'
+  ENV['SHOPIFY_API_SECRET'] = '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'
+  ENV['SHOPIFY_APP_URL'] = 'https://139bb63f626b.ngrok.io'
 end

@@ -6,10 +6,16 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "@shopify/polaris": "5.3.1",
+    "@shopify/polaris-icons": "^4.0.0-rc.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "webpack:deploy": "webpack --config=config/webpack/production.js -p",
+    "heroku-postbuild": "npm run webpack:deploy"
   }
 }
