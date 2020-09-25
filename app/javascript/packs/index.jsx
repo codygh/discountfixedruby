@@ -8,11 +8,37 @@ import{
 } from '@shopify/polaris';
 import {
   Provider,
+  Toast
 } from '@shopify/app-bridge-react';
 import Routes from './routes';
 
 class App extends React.Component {
+
+  state = {
+    showToast: false,
+    toastContent: '',
+    toastError: false,
+  };
+
+  componentDidMount() {
+    this.props.setGlobalState({ showToast: this.showToast });
+  }
+
+  dismissToast = () => {
+    this.setState({showToast: false});
+  };
+
+  showToast = (content, error) => {
+    this.setState({showToast: true, toastContent: content, toastError: error});
+  }
+
   render() {
+    const {
+      showToast,
+      toastContent,
+      toastError,
+    } = this.state;
+
     var data = document.getElementById('shopify-app-init').dataset;
     const config = {apiKey: data.apiKey, shopOrigin: data.shopOrigin};
 
@@ -22,9 +48,14 @@ class App extends React.Component {
       </Router>
     );
 
+    const toastMarkup = showToast ? (
+          <Toast content={toastContent} onDismiss={this.dismissToast} error={toastError} />
+        ) : null;
+
     return (
       <AppProvider>
         <Provider config={config}>
+          {toastMarkup}
           {layoutMarkup}
         </Provider>
       </AppProvider>
@@ -35,7 +66,7 @@ class App extends React.Component {
 const G_App = withGlobalState(App);
 
 const initialState = {
-  shop: false,
+  showToast: false,
 };
 
 

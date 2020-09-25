@@ -63,5 +63,5 @@ Rails.application.configure do
 
   ENV['SHOPIFY_API_KEY']  = '1b00da9a8259d170a6f14ed2cb35dbaf'
   ENV['SHOPIFY_API_SECRET'] = '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'
-  ENV['SHOPIFY_APP_URL'] = 'https://139bb63f626b.ngrok.io'
+  ENV['SHOPIFY_APP_URL'] = 'https://4d5eaf917cd3.ngrok.io'
 end
